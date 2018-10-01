@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Vehicles Application</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+
+
+</body>
+<script type="text/javascript" src="/scripts/signalr.js"></script>
+<script type="text/javascript">
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    let transportType = signalR.TransportType.WebSockets;
+    // Start the connection.
+    var connection = new signalR.HubConnection(`${window.location.protocol}//${document.location.host}/VLogHub`, { transport: transportType });
+
+    // Create a function that the hub can call to broadcast messages.
+    connection.on('ReceiveMessage', function (name, message) {
+
+      var encodedMsg = message.split(",");
+    
+      var divele = document.getElementById("vehicle_" + encodedMsg[0]);
+      console.warn(encodedMsg, divele);
+      if (divele!=null) {
+        if (encodedMsg[1].toLowerCase() == "false") {
+         // divele.className = "true";
+          divele.className = "false";
+        }
+        else {
+         // divele.className = "false";
+          divele.className = "true";
+        }
+      }
+
+      var diveles = document.getElementsByClassName("vehicle_" + encodedMsg[0]);
+      if (diveles.length) {
+        if (encodedMsg[1].toLowerCase() == "false") {
+          diveles[0].innerHTML = "<em>InActive</em>";
+        }
+        else {
+          diveles[0].innerHTML = "<em>Active</em>";
+        }
+      }
+
+
+    });
+
+
+
+    // Transport fallback functionality is now built into start.
+    connection.start()
+      .catch(error => {
+        console.error(error.message);
+      });
+  });
+</script>
+</html>

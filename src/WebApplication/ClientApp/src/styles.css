@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+input[type=text],  select {
+  width: 250px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width:23%;
+    margin: 5px;
+    text-align: center;
+    color:#FFF;
+    font-size: 15px;
+  }
+div.true {
+  background-color:green;
+}
+div.false {
+  background-color: red;
+}
+.true {
+  background-color: green;
+}
+.false {
+  background-color: red;
+}
+button {
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

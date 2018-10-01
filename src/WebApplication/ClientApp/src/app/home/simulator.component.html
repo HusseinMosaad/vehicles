@@ -1,0 +1,32 @@
+<h1>Vehicles List</h1>
+
+
+<p *ngIf="!vehicles"><em>Loading...</em></p>
+<hr />
+<div class="flex-container" *ngIf="vehicles">
+  <div *ngFor="let vehicle of vehicles" class="false"  id="vehicle_{{vehicle.vehicle_Id}}">
+
+    <h3>{{ vehicle.vin }}</h3>
+    <div>{{ vehicle.name }}</div>
+    <div>
+      {{ vehicle.reg_No }}
+    </div>
+   
+    <div>
+      <br />
+      <button id="btnvehicle_{{vehicle.vehicle_Id}}" type="button" (click)="buttonClick(vehicle.vehicle_Id)"  class="true">
+       Start
+    
+
+      </button>
+     
+
+
+
+
+    </div>
+    <br />
+  </div>
+ 
+</div>
+
